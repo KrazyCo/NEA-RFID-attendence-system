@@ -3,6 +3,7 @@ from smartcard.Exceptions import CardRequestTimeoutException
 from smartcard.CardType import AnyCardType
 from smartcard import util
 from cardDataTest import dataTest
+import time
 
 
 if __name__ == '__main__':
@@ -32,4 +33,5 @@ if __name__ == '__main__':
         data, sw1, sw2 = conn.transmit(get_uid)
         uid = util.toHexString(data)
         status = util.toHexString([sw1, sw2])
-        dataTest(ATR, uid, status)
+        tappedTime = time.time()
+        dataTest(ATR, uid, status, tappedTime)
