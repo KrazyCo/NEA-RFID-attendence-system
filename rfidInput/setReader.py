@@ -4,8 +4,6 @@ from smartcard.CardConnectionObserver import ConsoleCardConnectionObserver
 from smartcard.CardMonitoring import CardMonitor, CardObserver
 from smartcard.util import toHexString
 
-from cardDataTest import dataTest
-
 # define the apdus used in this script
 apdu = [0xFF, 0xCA, 0x00, 0x00, 0x04]
 
@@ -26,11 +24,11 @@ class selectDFTELECOMObserver(CardObserver):
             if sw1 == 144:
                 response = toHexString(response)
                 reader = card.reader[-4]
-                dataTest(response, reader, time.time())
+
 
 
 if __name__ == '__main__':
-    print("Insert or remove a SIM card in the system.")
+    print("Tap the in reader to set the correct number in config")
     print("")
     cardmonitor = CardMonitor()
     selectobserver = selectDFTELECOMObserver()
