@@ -1,4 +1,4 @@
-def dataTest(ATR, uid, status, tappedTime):
-    print(f"ATR = {ATR}")
-    print(f"UID = {uid}\tstatus = {status}")
+def dataTest(uid, readerNum, tappedTime):
+    print(f"UID = {uid}")
+    print(f"Reader = {readerNum}")
     print(f"tappedTime = {tappedTime}")
