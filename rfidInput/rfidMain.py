@@ -35,7 +35,7 @@ def findReader(reader):
         return "In" if config["inReader"]== reader else "Out"
 
 if __name__ == '__main__':
-    print("Insert or remove a SIM card in the system.")
+    print("Started")
     print("")
     cardmonitor = CardMonitor()
     selectobserver = selectDFTELECOMObserver()
