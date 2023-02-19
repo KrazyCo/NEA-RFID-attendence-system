@@ -24,6 +24,7 @@ class selectDFTELECOMObserver(CardObserver):
             response, sw1, sw2 = card.connection.transmit(apdu)
 
             if sw1 == 144:
+                print(type(response))
                 response = toHexString(response)
                 reader = card.reader[-4]
                 dataTest(response, reader, time.time())
