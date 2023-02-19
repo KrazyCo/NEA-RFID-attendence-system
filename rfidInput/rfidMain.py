@@ -34,7 +34,7 @@ class selectDFTELECOMObserver(CardObserver):
 def findReader(reader):
     with open('inputConfig.json', 'r') as f:
         config = json.load(f)
-        return "In" if config[reader] == reader else "Out"
+        return "In" if config["inReader"]== reader else "Out"
 
 if __name__ == '__main__':
     print("Insert or remove a SIM card in the system.")
