@@ -28,7 +28,7 @@ class selectDFTELECOMObserver(CardObserver):
                         "inReader": reader
                     }
                     json.dump(config, f, indent=4)
-                print("In reader set to: " + reader)
+                print("IN reader set to: " + reader)
                 print("Press ctrl+c to close")
 
 
