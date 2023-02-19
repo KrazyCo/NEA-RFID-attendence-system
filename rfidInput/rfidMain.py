@@ -1,4 +1,5 @@
 import time
+import json
 
 from smartcard.CardConnectionObserver import ConsoleCardConnectionObserver
 from smartcard.CardMonitoring import CardMonitor, CardObserver
@@ -30,6 +31,10 @@ class selectDFTELECOMObserver(CardObserver):
                 reader = card.reader[-4]
                 dataTest(response, reader, time.time())
 
+def findReader(reader):
+    with open('inputConfig.json', 'r') as f:
+        config = json.load(f)
+        return "In" if config[reader] == reader else "Out"
 
 if __name__ == '__main__':
     print("Insert or remove a SIM card in the system.")
