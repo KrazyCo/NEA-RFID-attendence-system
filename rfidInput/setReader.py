@@ -1,5 +1,4 @@
 import json
-import sys
 
 from smartcard.CardConnectionObserver import ConsoleCardConnectionObserver
 from smartcard.CardMonitoring import CardMonitor, CardObserver
@@ -30,7 +29,7 @@ class selectDFTELECOMObserver(CardObserver):
                     }
                     json.dump(config, f, indent=4)
                 print("In reader set to: " + reader)
-                sys.exit("Reader set, closing")
+                print("Press ctrl+c to close")
 
 
 
