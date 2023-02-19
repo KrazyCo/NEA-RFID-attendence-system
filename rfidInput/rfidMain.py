@@ -47,4 +47,4 @@ if __name__ == '__main__':
         # don't forget to remove observer, or the
         # monitor will poll forever...
         cardmonitor.deleteObserver(selectobserver)
-        print("Closed")
+        print(" detected, closed")
