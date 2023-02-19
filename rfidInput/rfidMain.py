@@ -29,7 +29,7 @@ class selectDFTELECOMObserver(CardObserver):
                 response = toHexString(response)
                 print(type(response))
                 reader = card.reader[-4]
-                dataTest(response, reader, time.time())
+                dataTest(response, findReader(reader), time.time())
 
 def findReader(reader):
     with open('inputConfig.json', 'r') as f:
