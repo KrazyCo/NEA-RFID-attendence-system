@@ -1,4 +1,5 @@
 import time
+import json
 
 from smartcard.CardConnectionObserver import ConsoleCardConnectionObserver
 from smartcard.CardMonitoring import CardMonitor, CardObserver
@@ -22,13 +23,18 @@ class selectDFTELECOMObserver(CardObserver):
             response, sw1, sw2 = card.connection.transmit(apdu)
 
             if sw1 == 144:
-                response = toHexString(response)
                 reader = card.reader[-4]
+                with open('inputConfig.json', 'w') as f:
+                    config = {
+                        "inputReader": reader
+                    }
+                    json.dump(config, f, indent=4)
+
 
 
 
 if __name__ == '__main__':
-    print("Tap the in reader to set the correct number in config")
+    print("Tap the IN reader to set the correct number in config")
     print("")
     cardmonitor = CardMonitor()
     selectobserver = selectDFTELECOMObserver()
