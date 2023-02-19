@@ -30,7 +30,6 @@ class selectDFTELECOMObserver(CardObserver):
                     }
                     json.dump(config, f, indent=4)
                 print("In reader set to: " + reader)
-                cardmonitor.deleteObserver(selectobserver)
                 sys.exit("Reader set, closing")
 
 
