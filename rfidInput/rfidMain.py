@@ -24,9 +24,10 @@ class selectDFTELECOMObserver(CardObserver):
 
             response, sw1, sw2 = card.connection.transmit(apdu)
 
-            if sw1 == 144:
-                response = toHexString(response)
+            if sw1 == 144: # if transmission was successful
+                response = toHexString(response) # convert response to hex string from byte
                 reader = card.reader[-4]
+                print(card.reader)
                 dataTest(response, findReader(reader), time.time())
 
 def findReader(reader):
@@ -37,6 +38,8 @@ def findReader(reader):
 if __name__ == '__main__':
     print("Started")
     print("")
+
+    # setup the observer 
     cardmonitor = CardMonitor()
     selectobserver = selectDFTELECOMObserver()
     cardmonitor.addObserver(selectobserver)
@@ -44,7 +47,5 @@ if __name__ == '__main__':
         while True:
             input()
     except KeyboardInterrupt:
-        # don't forget to remove observer, or the
-        # monitor will poll forever...
-        cardmonitor.deleteObserver(selectobserver)
+        cardmonitor.deleteObserver(selectobserver) # remove the observer on keyboard interrupt
         print(" detected, closed")
