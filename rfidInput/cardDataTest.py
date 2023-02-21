@@ -1,5 +1,5 @@
-def dataTest(uid, readerNum, tappedTime):
+def dataTest(uid, reader, tappedTime):
     print(f"UID = {uid}")
-    print(f"Reader = {readerNum}")
+    print(f"Reader = {reader}")
     print(f"tappedTime = {tappedTime}")
     print("")
