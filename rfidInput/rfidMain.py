@@ -18,7 +18,6 @@ class selectDFTELECOMObserver(CardObserver):
 
     def update(self, observable, actions): # called when the card is inserted/removed
         (addedcards, removedcards) = actions 
-        print(actions)
         for card in addedcards:
             card.connection = card.createConnection() # create connection to the card
             card.connection.connect() 
