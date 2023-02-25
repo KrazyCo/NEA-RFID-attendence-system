@@ -32,8 +32,6 @@ class selectDFTELECOMObserver(CardObserver):
                 print("Press ctrl+c to close")
 
 
-
-
 if __name__ == '__main__':
     print("Tap the IN reader to set the correct number in config")
     print("")
@@ -44,7 +42,5 @@ if __name__ == '__main__':
         while True:
             input()
     except KeyboardInterrupt:
-        # don't forget to remove observer, or the
-        # monitor will poll forever...
         cardmonitor.deleteObserver(selectobserver)
         print(" detected, closed")
