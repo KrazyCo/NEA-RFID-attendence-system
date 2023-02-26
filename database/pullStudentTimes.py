@@ -19,4 +19,8 @@ def pullStudentTimes(studentID):
 
 if __name__ == '__main__':
     print(pullStudentTimes(1))
-    print(pullStudentTimes(0))
+
+
+
+    
+    # print(pullStudentTimes(0))

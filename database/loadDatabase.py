@@ -22,18 +22,16 @@ def loadDatabase():
 
 if __name__ == '__main__':
     db = loadDatabase()
-    c = db.cursor()
-    try:
-        c.execute('''INSERT INTO Students (StudentName, CurrentlyIn) VALUES ('John', False)''')
-        c.execute('''INSERT INTO StudentIn (CardID, Time) VALUES ('06und48', 123456789)''')
-        c.execute('''INSERT INTO StudentOut (CardID, Time) VALUES ('06und481', 12345766789)''')
-        c.execute('''INSERT INTO StudentCards (CardID, StudentID) VALUES ('ab3s459s', 1)''')
-    except Error as e:
-        print(e)
-    db.commit()
     db.close()
 
 
+    # try:
+    #     c.execute('''INSERT INTO Students (StudentName, CurrentlyIn) VALUES ('John', False)''')
+    #     c.execute('''INSERT INTO StudentIn (CardID, Time) VALUES ('06und48', 123456789)''')
+    #     c.execute('''INSERT INTO StudentOut (CardID, Time) VALUES ('06und481', 12345766789)''')
+    #     c.execute('''INSERT INTO StudentCards (CardID, StudentID) VALUES ('ab3s459s', 1)''')
+    # except Error as e:
+    #     print(e)
 # c = db.cursor()
 # c.execute('''INSERT INTO Students (StudentName, CurrentlyIn) VALUES ('John', True)''')
 # # c.execute('''INSERT INTO StudentIn (CardID, Time) VALUES ('06und48', 123456789)''')

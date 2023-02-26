@@ -16,5 +16,7 @@ def pullStudentStatus(query):
     return studentStatus
 
 if __name__ == '__main__':
-    print(f"{pullStudentStatus('J') = }")
-    print(f"{pullStudentStatus(1) = }")
+    print(f"{pullStudentStatus('Ch') = }")
+
+
+    # print(f"{pullStudentStatus('Ja') = }")

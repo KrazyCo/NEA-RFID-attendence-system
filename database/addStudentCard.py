@@ -12,7 +12,10 @@ def addStudentCard(cardID, studentID):
         print(e)
 
 if __name__ == '__main__':
-    addStudentCard('ab3s469s', 1)
-    addStudentCard('ab3s479s', 2)
-    addStudentCard('ab3s489s', 3)
-    addStudentCard('ab3s499s', 4)
+    addStudentCard('72 17 4C 26', 1)
+    addStudentCard('28 17 4C 26', 2)
+
+
+    # addStudentCard('ab3s479s', 2)
+    # addStudentCard('ab3s489s', 3)
+    # addStudentCard('ab3s499s', 4)

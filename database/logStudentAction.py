@@ -19,7 +19,11 @@ def logStudentAction(cardID, time, action):
     
 
 if __name__ == '__main__':
-    logStudentAction('06und48', 123456789, 'In')
-    logStudentAction('06u0d48', 123456789, 'Out')
-    logStudentAction('06u1d48', 111122221, 'In')
-    logStudentAction('06u2d48', 111122221, 'Out')
+    # logStudentAction('72 17 4C 26', 1672743971, 'In')
+
+    logStudentAction('72 17 4C 26', 123456789, 'In')
+    logStudentAction('72 17 4C 26', 123456789, 'Out')
+    logStudentAction('28 17 4C 26', 111122221, 'In')
+    logStudentAction('28 17 4C 26', 111122221, 'Out')
+    logStudentAction('93 17 4C 26', 111122221, 'In')
+    logStudentAction('93 17 4C 26', 111122221, 'Out')
