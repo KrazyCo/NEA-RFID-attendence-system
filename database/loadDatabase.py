@@ -1,24 +1,22 @@
-import sqlite3
+import sqlite3 # need full library to create the database connection
 from sqlite3 import Error
-from pathlib import Path
-
-# find current dir for file stuff
-
+from pathlib import Path # used to get the current directory
 
 def loadDatabase():
-    currDir = str(Path(__file__).parent.absolute()).replace("\\", "/")
+    currDir = str(Path(__file__).parent.absolute()).replace("\\", "/") # Get the current directory
     try:
-        conn = sqlite3.connect(currDir+'/studentDatabase.db')
-        c = conn.cursor()
+        conn = sqlite3.connect(currDir+'/studentDatabase.db') # Connect to the database
+        c = conn.cursor() # Create a cursor to create tables if needed
     except Error as e:
         print(e)
-        return None
+        return None # Return None if there is an error, after printing the error
     
-    c.execute('''CREATE TABLE IF NOT EXISTS Students (StudentID INTEGER PRIMARY KEY, StudentName TEXT NOT NULL, CurrentlyIn BOOLEAN)''')
-    c.execute('''CREATE TABLE IF NOT EXISTS StudentIn (InID INTEGER PRIMARY KEY, CardID TEXT NOT NULL, Time INTEGER NOT NULL)''')
-    c.execute('''CREATE TABLE IF NOT EXISTS StudentOut (OutID INTEGER PRIMARY KEY, CardID TEXT NOT NULL, Time INTEGER NOT NULL)''')
-    c.execute('''CREATE TABLE IF NOT EXISTS StudentCards (CardID TEXT PRIMARY KEY, StudentID INTEGER NOT NULL)''')
-    return conn
+    c.execute('''CREATE TABLE IF NOT EXISTS Students (StudentID INTEGER PRIMARY KEY, StudentName TEXT NOT NULL, CurrentlyIn BOOLEAN)''') # Create the Students table if it doesn't exist
+    c.execute('''CREATE TABLE IF NOT EXISTS StudentIn (InID INTEGER PRIMARY KEY, CardID TEXT NOT NULL, Time INTEGER NOT NULL)''') # Create the StudentIn table if it doesn't exist
+    c.execute('''CREATE TABLE IF NOT EXISTS StudentOut (OutID INTEGER PRIMARY KEY, CardID TEXT NOT NULL, Time INTEGER NOT NULL)''') # Create the StudentOut table if it doesn't exist
+    c.execute('''CREATE TABLE IF NOT EXISTS StudentCards (CardID TEXT PRIMARY KEY, StudentID INTEGER NOT NULL)''') # Create the StudentCards table if it doesn't exist
+    print(type(conn))
+    return conn # Return the connection to the database so the rest of the program can edit the database
 
 if __name__ == '__main__':
     db = loadDatabase()

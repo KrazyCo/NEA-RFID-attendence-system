@@ -1,11 +1,11 @@
 from loadDatabase import loadDatabase
 from sqlite3 import Error
 
-def addStudentCard(cardID, studentID):
+def addStudentCard(cardID, studentID): # cardID is a string, studentID is an int
     try:
         db = loadDatabase()
         c = db.cursor()
-        c.execute(f'''INSERT INTO StudentCards (CardID, StudentID) VALUES ('{cardID}', {studentID})''')
+        c.execute(f'''INSERT INTO StudentCards (CardID, StudentID) VALUES ('{cardID}', {studentID})''') # insert cardID and studentID into StudentCards table
         db.commit()
         db.close()
     except Error as e:
