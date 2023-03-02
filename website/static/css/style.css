@@ -147,3 +147,7 @@ td {
 .rollcall a:hover {
     background-color: #c20d0d;
 }
+
+.present-student {
+    background-color: rgb(255, 163, 163);
+}

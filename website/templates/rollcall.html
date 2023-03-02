@@ -28,7 +28,7 @@
                 </tr>
                 {% for student in students %}
                 {% if student[2] == 1 %}
-                <tr style="background-color: rgb(255, 163, 163);">
+                <tr class="present-student">
                     <td>{{ student[1] }}</td>
                     <td>{{ "Yes" if student[2] == 1 else "No" }}</td>
                 </tr>
