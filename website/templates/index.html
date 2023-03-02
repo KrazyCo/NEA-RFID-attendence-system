@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Home {% endblock %}</h1>
+        <div class="main-left-div">
+            <table>
+                <tr>
+                    <th>Student</th>
+                    <th>On site</th>
+                </tr>
+                {% for student in students %}
+                    <tr>
+                        <td>{{ student[1] }}</td>
+                        <td>{{ "Yes" if student[2] == 1 else "No" }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="main-right-div">
+            <ul class="small-links">
+                <li><a href="{{ url_for('addStudent')}}">AddStudent</a></li>
+                <li><a href="{{ url_for('seeStudents')}}">See students</a></li>
+            </ul>
+            <ul class="small-links">
+                <li><a href="{{ url_for('linkStudentCard')}}">Link student cards</a></li>
+                <li><a href="{{ url_for('seeTimes')}}">See times</a></li>
+            </ul>
+            <div class="rollcall">
+                <a href="#">Roll call</a>
+            </div>
+        </div>
+{% endblock %}

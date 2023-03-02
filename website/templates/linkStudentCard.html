@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Link student cards {% endblock %}</h1>
+    {% for student in students %}
+        <p>{{ student }}</p>
+    {% endfor %}
+{% endblock %}

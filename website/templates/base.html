@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+
+    <title>{% block title %} {% endblock %}</title>
+</head>
+
+<body>
+    <nav>
+        <ul class="left-group">
+            <li><a href="{{ url_for('index')}}">Home</a></li>
+            <li><a href="{{ url_for('addStudent')}}">Add student</a></li>
+            <li><a href="{{ url_for('linkStudentCard')}}">Link student cards</a></li>
+            <li><a href="{{ url_for('seeStudents')}}">See students</a></li>
+            <li><a href="{{ url_for('seeTimes')}}">See times</a></li>
+        </ul>
+        <div class="right-element">
+            <a href="{{ url_for('rollcall')}}">Roll call</a>
+        </div>
+    </nav>
+    <div class="container">
+        {% block content %} {% endblock %}
+    </div>
+</body>
