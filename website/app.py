@@ -9,6 +9,8 @@ from addStudent import addStudent as addStudentDb
 from addStudentCard import addStudentCard
 from pullAllStudentStatus import pullAllStudentStatus
 from pullAllStudentTimes import pullAllStudentTimes
+from pullAllStudentCards import pullAllStudentCards
+from pullAllStudentActions import pullAllStudentActions
 from pullStudentStatus import pullStudentStatus
 from pullStudentTimes import pullStudentTimes
 
@@ -46,8 +48,13 @@ def linkStudentCard():
             flash('Please enter a valid studentID.')
         else:
             addStudentCard(cardID, studentID)
-    students = pullAllStudentStatus()
-    return render_template('linkStudentCard.html', students=students)
+    cards = pullAllStudentCards()
+    actions = pullAllStudentActions()
+    actions.sort(key=lambda x: x[1], reverse=True)
+    generatedActions = []
+    for action in actions:
+        generatedActions.append([action[0], getReadableTime(action[1]), action[2]])
+    return render_template('linkStudentCard.html', cards=cards, actions=generatedActions)
 
 @app.route('/seeStudents', methods=('GET', 'POST'))
 def seeStudents():

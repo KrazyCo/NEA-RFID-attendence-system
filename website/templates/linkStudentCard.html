@@ -21,16 +21,36 @@
     <div style="color:red;">{{ message }}</div>
     {% endfor %}
 
-    <div class="main-table">
+    <div class="main-left-div">
+        <h2>Stored cards</h2>
         <table>
             <tr>
+                <th>CardID</th>
                 <th>StudentID</th>
-                <th>Student Name</th>
+                <th>Student name</th>
             </tr>
-            {% for student in students %}
+            {% for card in cards %}
                 <tr>
-                    <td>{{ student[0] }}</td>
-                    <td>{{ student[1] }}</td>
+                    <td>{{ card[0] }}</td>
+                    <td>{{ card[1] }}</td>
+                    <td>{{ card[2] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="main-right-div">
+        <h2>Last cards tapped</h2>
+        <table>
+            <tr>
+                <th>Card ID</th>
+                <th>Reader</th>
+                <th>Time</th>
+            </tr>
+            {% for action in actions %}
+                <tr>
+                    <td>{{ action[0] }}</td>
+                    <td>{{ action[2] }}</td>
+                    <td>{{ action[1] }}</td>
                 </tr>
             {% endfor %}
         </table>
