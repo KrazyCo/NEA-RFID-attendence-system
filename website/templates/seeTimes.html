@@ -13,6 +13,10 @@
         </div>
     </form>
 
+    {% for message in get_flashed_messages() %}
+    <div style="color:red;">{{ message }}</div>
+    {% endfor %}
+
     <div class="main-left-div">
         <h2>In times</h2>
         <table>
