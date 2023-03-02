@@ -49,8 +49,10 @@ def linkStudentCard():
         studentID = request.form['studentID']
         if not cardID or not studentID:
             flash('Please enter cardID and studentID.')
-        elif not studentID.isnumeric() or len(studentID) != 11:
+        elif not studentID.isnumeric():
             flash('Please enter a valid studentID.')
+        elif len(cardID) != 11:
+            flash('Please enter a valid cardID.')
         else:
             addStudentCard(cardID, studentID)
     cards = pullAllStudentCards()
