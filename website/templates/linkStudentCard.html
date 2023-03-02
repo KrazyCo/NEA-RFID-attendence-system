@@ -2,7 +2,38 @@
 
 {% block content %}
     <h1>{% block title %} Link student cards {% endblock %}</h1>
-    {% for student in students %}
-        <p>{{ student }}</p>
+
+    <form method="post">
+        <div class="form-group">
+            <label for="cardID">Card ID</label>
+            <input type="text" class="form-control" id="cardID" name="cardID" placeholder="Enter Card ID", value="{{ request.form['cardID'] }}">
+        </div>
+        <div class="form-group">
+            <label for="studentID">Student ID</label>
+            <input type="text" class="form-control" id="studentID" name="studentID" placeholder="Enter Student ID", value="{{ request.form['studentID'] }}">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+
+    {% for message in get_flashed_messages() %}
+    <div style="color:red;">{{ message }}</div>
     {% endfor %}
+
+    <div class="main-table">
+        <table>
+            <tr>
+                <th>StudentID</th>
+                <th>Student Name</th>
+            </tr>
+            {% for student in students %}
+                <tr>
+                    <td>{{ student[0] }}</td>
+                    <td>{{ student[1] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
 {% endblock %}

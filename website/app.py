@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 
+import datetime
+
 import sys
 sys.path.insert(0, '../database')
 
-from addStudent import addStudent
+from addStudent import addStudent as addStudentDb
 from addStudentCard import addStudentCard
 from pullAllStudentStatus import pullAllStudentStatus
 from pullAllStudentTimes import pullAllStudentTimes
@@ -11,31 +13,72 @@ from pullStudentStatus import pullStudentStatus
 from pullStudentTimes import pullStudentTimes
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'yeathisisasecretkeyanditsverysecure'
+
+def getReadableTime(time):
+    return datetime.datetime.utcfromtimestamp(time).strftime('%H:%M:%S %d-%m-%Y')
 
 @app.route('/')
 def index():
     students = pullAllStudentStatus()
     return render_template('index.html', students=students)
 
-@app.route('/addStudent')
+@app.route('/addStudent', methods=('GET', 'POST'))
 def addStudent():
+    if request.method == 'POST':
+        studentName = request.form['studentName']
+        if not studentName:
+            flash('Please enter a student name.')
+        else:
+            addStudentDb(studentName)
     students = pullAllStudentStatus()
+    students.reverse()
     return render_template('addStudent.html', students=students)
 
-@app.route('/linkStudentCard')
+@app.route('/linkStudentCard', methods=('GET', 'POST'))
 def linkStudentCard():
+    if request.method == 'POST':
+        cardID = request.form['cardID']
+        studentID = request.form['studentID']
+        if not cardID or not studentID:
+            flash('Please enter cardID and studentID.')
+        elif not studentID.isnumeric():
+            flash('Please enter a valid studentID.')
+        else:
+            addStudentCard(cardID, studentID)
     students = pullAllStudentStatus()
     return render_template('linkStudentCard.html', students=students)
 
-@app.route('/seeStudents')
+@app.route('/seeStudents', methods=('GET', 'POST'))
 def seeStudents():
+    if request.method == 'POST':
+        studentName = request.form['studentName']
+        if not studentName:
+            students = pullAllStudentStatus()
+            return render_template('seeStudents.html', students=students)
+        else:
+            students = pullStudentStatus(studentName)
+            return render_template('seeStudents.html', students=students)
     students = pullAllStudentStatus()
     return render_template('seeStudents.html', students=students)
 
-@app.route('/seeTimes')
+@app.route('/seeTimes', methods=('GET', 'POST'))
 def seeTimes():
-    students = pullAllStudentStatus()
-    return render_template('seeTimes.html', students=students)
+    if request.method == 'POST':
+        studentID = request.form['studentID']
+        if studentID:
+            times = pullStudentTimes(studentID)
+        else:
+            times = pullAllStudentTimes()
+    else:
+        times = pullAllStudentTimes()
+    generatedTimes = []
+    for type in times:
+        tempTimes = []
+        for time in type:
+            tempTimes.append([time[0], time[1], time[2], getReadableTime(time[3])])
+        generatedTimes.append(tempTimes)
+    return render_template('seeTimes.html', times=generatedTimes)
 
 @app.route('/rollcall')
 def rollcall():
