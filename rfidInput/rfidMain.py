@@ -33,7 +33,7 @@ class selectDFTELECOMObserver(CardObserver):
                 response = toHexString(response) # convert response to hex string from byte
                 reader = card.reader[-4] # Take single digit from reader name - shown with [] - ACS ACR122U 0[1] 00
                 dataTest(response, findReader(reader), time.time()) # send UID, reader type and time to dataTest function
-                logStudentAction(response, findReader(reader), time.time()) # send UID, reader type and time to logStudentAction function
+                logStudentAction(response, time.time(), findReader(reader)) # send UID, reader type and time to logStudentAction function
 
 def findReader(reader):
     with open('inputConfig.json', 'r') as f:
