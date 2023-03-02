@@ -23,7 +23,12 @@ def getReadableTime(time):
 @app.route('/')
 def index():
     students = pullAllStudentStatus()
-    return render_template('index.html', students=students)
+    totalStudents = len(students)
+    studentsIn = 0
+    for student in students:
+        if student[2] == 1:
+            studentsIn += 1
+    return render_template('index.html', students=students, totalStudents=totalStudents, studentsIn=studentsIn)
 
 @app.route('/addStudent', methods=('GET', 'POST'))
 def addStudent():
