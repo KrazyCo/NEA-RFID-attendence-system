@@ -93,4 +93,4 @@ def rollcall():
     return render_template('rollcall.html', students=students)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0")
