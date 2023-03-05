@@ -1,58 +1,59 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} See times {% endblock %}</h1>
+<h1>{% block title %} See times {% endblock %}</h1>
 
-    <form method="post">
-        <div class="form-group">
-            <label for="studentID">Student ID</label>
-            <input type="text" class="form-control" id="studentID" name="studentID" placeholder="Enter student ID", value="{{ request.form['studentID'] }}">
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Search</button>
-        </div>
-    </form>
-
-    {% for message in get_flashed_messages() %}
-    <div style="color:red;">{{ message }}</div>
-    {% endfor %}
-
-    <div class="main-left-div">
-        <h2>In times</h2>
-        <table>
-            <tr>
-                <th>Student ID</th>
-                <th>Name</th>
-                <th>Card ID</th>
-                <th>Time</th>
-            </tr>
-            {% for time in times[0] %}
-                <tr>
-                    <td>{{ time[0] }}</td>
-                    <td>{{ time[2] }}</td>
-                    <td>{{ time[1] }}</td>
-                    <td>{{ time[3] }}</td>
-                </tr>
-            {% endfor %}
-        </table>
+<form method="post">
+    <div class="form-group">
+        <label for="studentID">Student ID</label>
+        <input type="text" class="form-control" id="studentID" name="studentID" placeholder="Enter student ID" ,
+            value="{{ request.form['studentID'] }}">
     </div>
-    <div class="main-right-div">
-        <h2>Out times</h2>
-        <table>
-            <tr>
-                <th>Student ID</th>
-                <th>Name</th>
-                <th>Card ID</th>
-                <th>Time</th>
-            </tr>
-            {% for time in times[1] %}
-                <tr>
-                    <td>{{ time[0] }}</td>
-                    <td>{{ time[2] }}</td>
-                    <td>{{ time[1] }}</td>
-                    <td>{{ time[3] }}</td>
-                </tr>
-            {% endfor %}
-        </table>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Search</button>
     </div>
+</form>
+
+{% for message in get_flashed_messages() %}
+<div style="color:red;">{{ message }}</div>
+{% endfor %}
+
+<div class="main-left-div">
+    <h2>In times</h2>
+    <table>
+        <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Card ID</th>
+            <th>Time</th>
+        </tr>
+        {% for time in times[0] %}
+        <tr>
+            <td>{{ time[0] }}</td>
+            <td>{{ time[2] }}</td>
+            <td>{{ time[1] }}</td>
+            <td>{{ time[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div class="main-right-div">
+    <h2>Out times</h2>
+    <table>
+        <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Card ID</th>
+            <th>Time</th>
+        </tr>
+        {% for time in times[1] %}
+        <tr>
+            <td>{{ time[0] }}</td>
+            <td>{{ time[2] }}</td>
+            <td>{{ time[1] }}</td>
+            <td>{{ time[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 {% endblock %}

@@ -80,10 +80,8 @@ def seeStudents():
 def seeTimes():
     if request.method == 'POST':
         studentID = request.form['studentID']
-        print(studentID.isnumeric())
         if not studentID.isnumeric():
             flash('Please enter a valid studentID.')
-            print("what")
             times = pullAllStudentTimes()
         elif studentID:
             times = pullStudentTimes(studentID)

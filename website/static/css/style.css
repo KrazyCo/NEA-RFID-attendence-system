@@ -13,7 +13,7 @@ nav {
     align-items: center;
 }
 
-.left-group {
+.left-group { 
     display: flex;
     list-style-type: none;
     margin: 0;
@@ -74,15 +74,6 @@ body {
     float: left;
     /* height: 300px; */
 }
-
-/* Optional: add some styles to the divs */
-/* .main-left-div {
-    background-color: #eee;
-}
-
-.main-right-div {
-    background-color: #ccc;
-} */
 
 table {
     width: calc(100% - 20px);

@@ -1,37 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} See students {% endblock %}</h1>
+<h1>{% block title %} See students {% endblock %}</h1>
 
-    <form method="post">
-        <div class="form-group">
-            <label for="studentName">Student Name</label>
-            <input type="text" class="form-control" id="studentName" name="studentName" placeholder="Enter student name", value="{{ request.form['studentName'] }}">
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Search</button>
-        </div>
-    </form>
-
-    {% for message in get_flashed_messages() %}
-    <div style="color:red;">{{ message }}</div>
-    {% endfor %}
-
-    <div class="main-table">
-        <table>
-            <tr>
-                <th>StudentID</th>
-                <th>Student Name</th>
-                <th>On site</th>
-            </tr>
-            {% for student in students %}
-                <tr>
-                    <td>{{ student[0] }}</td>
-                    <td>{{ student[1] }}</td>
-                    <td>{{ "Yes" if student[2] == 1 else "No" }}</td>
-                </tr>
-            {% endfor %}
-        </table>
+<form method="post">
+    <div class="form-group">
+        <label for="studentName">Student Name</label>
+        <input type="text" class="form-control" id="studentName" name="studentName" placeholder="Enter student name" ,
+            value="{{ request.form['studentName'] }}">
     </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+{% for message in get_flashed_messages() %}
+<div style="color:red;">{{ message }}</div>
+{% endfor %}
+
+<div class="main-table">
+    <table>
+        <tr>
+            <th>StudentID</th>
+            <th>Student Name</th>
+            <th>On site</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student[0] }}</td>
+            <td>{{ student[1] }}</td>
+            <td>{{ "Yes" if student[2] == 1 else "No" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 
 {% endblock %}
