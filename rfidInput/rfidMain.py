@@ -28,6 +28,7 @@ class selectDFTELECOMObserver(CardObserver):
         for card in addedcards:
             card.connection = card.createConnection() # create connection to the card
             card.connection.connect() 
+            apdu = SELECT + DF_TELECOM
 
             response, sw1, sw2 = card.connection.transmit(apdu) # transmit hex code for UID and save response and status
 
