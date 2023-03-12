@@ -12,8 +12,8 @@ def addStudentCard(cardID, studentID): # cardID is a string, studentID is an int
         print(e)
 
 if __name__ == '__main__':
-    addStudentCard('72 17 4C 26', 1)
-    addStudentCard('28 17 4C 26', 2)
+    addStudentCard('72 17 4C 26', 5)
+    addStudentCard('28 17 4C 26', 6)
 
 
     # addStudentCard('ab3s479s', 2)

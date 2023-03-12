@@ -11,10 +11,10 @@ def loadDatabase():
         print(e)
         return None # Return None if there is an error, after printing the error
     
-    c.execute('''CREATE TABLE IF NOT EXISTS Students (StudentID INTEGER PRIMARY KEY, StudentName TEXT NOT NULL, CurrentlyIn BOOLEAN)''') # Create the Students table if it doesn't exist
-    c.execute('''CREATE TABLE IF NOT EXISTS StudentIn (InID INTEGER PRIMARY KEY, CardID TEXT NOT NULL, Time INTEGER NOT NULL)''') # Create the StudentIn table if it doesn't exist
-    c.execute('''CREATE TABLE IF NOT EXISTS StudentOut (OutID INTEGER PRIMARY KEY, CardID TEXT NOT NULL, Time INTEGER NOT NULL)''') # Create the StudentOut table if it doesn't exist
-    c.execute('''CREATE TABLE IF NOT EXISTS StudentCards (CardID TEXT PRIMARY KEY, StudentID INTEGER NOT NULL)''') # Create the StudentCards table if it doesn't exist
+    c.execute('''CREATE TABLE Students (StudentID INTEGER PRIMARY KEY, StudentName TEXT NOT NULL, CurrentlyIn BOOLEAN)''') # Create the Students table if it doesn't exist
+    c.execute('''CREATE TABLE StudentIn (InID INTEGER PRIMARY KEY, CardID TEXT NOT NULL, Time INTEGER NOT NULL)''') # Create the StudentIn table if it doesn't exist
+    c.execute('''CREATE TABLE StudentOut (OutID INTEGER PRIMARY KEY, CardID TEXT NOT NULL, Time INTEGER NOT NULL)''') # Create the StudentOut table if it doesn't exist
+    c.execute('''CREATE TABLE StudentCards (CardID TEXT PRIMARY KEY, StudentID INTEGER NOT NULL)''') # Create the StudentCards table if it doesn't exist
     return conn # Return the connection to the database so the rest of the program can edit the database
 
 if __name__ == '__main__':
