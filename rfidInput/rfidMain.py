@@ -13,7 +13,9 @@ sys.path.insert(0, '../database')
 from logStudentAction import logStudentAction
 
 # define the apdus used in this script
-apdu = [0xFF, 0xCA, 0x00, 0x00, 0x04] # UID request hex code
+GET_RESPONSE = [0XA0, 0XC0, 00, 00]
+SELECT = [0xA0, 0xA4, 0x00, 0x00, 0x02]
+DF_TELECOM = [0x7F, 0x10]
 
 
 # a simple card observer that tries to select DF_TELECOM on an inserted card
